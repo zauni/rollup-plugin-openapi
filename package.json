@@ -1,0 +1,40 @@
+{
+  "name": "rollup-plugin-openapi",
+  "version": "1.0.0",
+  "description": "A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zauni/rollup-plugin-openapi.git"
+  },
+  "keywords": [
+    "rollup",
+    "vite",
+    "plugin",
+    "rollup-plugin",
+    "vite-plugin",
+    "openapi",
+    "swagger",
+    "yaml"
+  ],
+  "author": "Matthias Zaunseder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zauni/rollup-plugin-openapi/issues"
+  },
+  "homepage": "https://github.com/zauni/rollup-plugin-openapi#readme",
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@rollup/pluginutils": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "types": "./types/index.d.ts",
+  "devDependencies": {
+    "rollup": "^2.67.2"
+  }
+}
