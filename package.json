@@ -2,14 +2,42 @@
   "name": "rollup-plugin-openapi",
   "version": "1.0.0",
   "description": "A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "scripts": {
+    "build": "rollup -c",
+    "prebuild": "del-cli dist",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@rollup/pluginutils": "^4.1.2",
+    "openapi-types": "^10.0.0"
+  },
+  "devDependencies": {
+    "del-cli": "^4.0.1",
+    "rollup": "^2.67.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zauni/rollup-plugin-openapi.git"
   },
+  "author": "Matthias Zaunseder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zauni/rollup-plugin-openapi/issues"
+  },
+  "homepage": "https://github.com/zauni/rollup-plugin-openapi#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "rollup",
     "vite",
@@ -19,22 +47,5 @@
     "openapi",
     "swagger",
     "yaml"
-  ],
-  "author": "Matthias Zaunseder",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zauni/rollup-plugin-openapi/issues"
-  },
-  "homepage": "https://github.com/zauni/rollup-plugin-openapi#readme",
-  "dependencies": {
-    "@apidevtools/swagger-cli": "^4.0.4",
-    "@rollup/pluginutils": "^4.1.2"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "types": "./types/index.d.ts",
-  "devDependencies": {
-    "rollup": "^2.67.2"
-  }
+  ]
 }

@@ -1,3 +1,5 @@
+// @ts-check
+
 import SwaggerCli from '@apidevtools/swagger-cli';
 import { createFilter } from '@rollup/pluginutils';
 
@@ -26,7 +28,7 @@ export default function openapi(opts = {}) {
 
       return {
         code: `var data = ${content};\n\nexport default data;\n`,
-        map: null, // provide source map if available
+        map: null, // Swagger CLI doesn't provide a source map
       };
     },
   };

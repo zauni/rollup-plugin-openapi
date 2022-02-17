@@ -50,10 +50,11 @@ Then call `vite` either via the [CLI](https://vitejs.dev/guide/#command-line-int
 
 ### Use
 
-With an accompanying file `src/index.js`, the local `api.yaml` file would now be importable as seen below:
+With an accompanying file `src/index.js`, the local `src/api.yaml` file would now be importable as seen below:
+
+_src/api.yaml_
 
 ```yaml
-# api.yaml
 openapi: '3.0.0'
 info:
   title: My great API
@@ -77,8 +78,9 @@ paths:
                 someKey: some value
 ```
 
+_src/index.js_
+
 ```js
-// src/index.js
 import api from './api.yaml';
 
 console.log(api);
@@ -86,8 +88,9 @@ console.log(api);
 
 If you have [SwaggerUI in the React flavor](https://www.npmjs.com/package/swagger-ui-react) installed you can now render it. With Vite you get Hot Module Reload for free.
 
-```js
-// src/index.jsx
+_src/index.jsx_
+
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SwaggerUI from 'swagger-ui-react';
@@ -97,6 +100,26 @@ import api from './api.yaml';
 
 ReactDOM.render(<SwaggerUI spec={api} />, document.getElementById('root'));
 ```
+
+### Use with TypeScript
+
+If you use TypeScript you need to create a file like `yaml.d.ts` with the following contents:
+
+_src/yaml.d.ts_
+
+```ts
+/// <reference types="rollup-plugin-openapi/types/yaml" />
+```
+
+_src/index.ts_
+
+```ts
+import api from './api.yaml';
+
+console.log(api);
+```
+
+Otherwise TypeScript will fail with the error `Cannot find module './api.yaml' or its corresponding type declarations.`
 
 ## Options
 
