@@ -7,7 +7,8 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "del-cli dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava",
+    "pretest": "npm run build"
   },
   "dependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
@@ -15,6 +16,7 @@
     "openapi-types": "^10.0.0"
   },
   "devDependencies": {
+    "ava": "^4.0.1",
     "del-cli": "^4.0.1",
     "rollup": "^2.67.2"
   },

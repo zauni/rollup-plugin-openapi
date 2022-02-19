@@ -59,6 +59,7 @@ openapi: '3.0.0'
 info:
   title: My great API
   description: Great description
+  version: '1.0.0'
 
 paths:
   /my/path:
