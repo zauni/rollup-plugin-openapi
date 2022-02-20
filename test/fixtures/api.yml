@@ -1,0 +1,19 @@
+openapi: '3.0.0'
+info:
+  title: My great API
+  description: Great description
+  version: '1.0.0'
+
+paths:
+  /my/path:
+    get:
+      summary: Some GET request
+      responses:
+        '200':
+          description: Some response
+          content:
+            application/json:
+              schema:
+                $ref: './schema.yaml#/ApiObject'
+              example:
+                someKey: some value
