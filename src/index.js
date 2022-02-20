@@ -1,6 +1,6 @@
 // @ts-check
 
-import SwaggerCli from '@apidevtools/swagger-cli';
+import SwaggerParser from '@apidevtools/swagger-parser';
 import { createFilter } from '@rollup/pluginutils';
 
 const ext = /\.ya?ml$/;
@@ -19,15 +19,14 @@ export default function openapi(opts = {}) {
       if (!ext.test(id)) return null;
       if (!filter(id)) return null;
 
-      const content = await SwaggerCli.bundle(id, {
-        dereference: true,
-        wrap: Infinity,
-        format: null,
-        outfile: null,
-      });
+      const content = await SwaggerParser.bundle(id);
 
       return {
-        code: `var data = ${content};\n\nexport default data;\n`,
+        code: `var data = ${JSON.stringify(
+          content,
+          null,
+          2
+        )};\n\nexport default data;\n`,
         map: null, // Swagger CLI doesn't provide a source map
       };
     },
