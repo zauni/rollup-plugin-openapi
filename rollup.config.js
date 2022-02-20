@@ -1,6 +1,9 @@
 import pkg from './package.json';
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
   input: 'src/index.js',
   external: Object.keys(pkg.dependencies),
   output: [
@@ -8,3 +11,5 @@ export default {
     { file: pkg.module, format: 'es', sourcemap: true },
   ],
 };
+
+export default config;

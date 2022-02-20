@@ -138,6 +138,10 @@ Default: `null`
 
 A [minimatch pattern](https://github.com/isaacs/minimatch), or array of patterns, which specifies the files in the build the plugin should operate on. By default all files are targeted.
 
+## Known issues
+
+Currently Vite is not picking up changes in referenced YAML files (using `$ref`) in watch mode. Just the imported YAML file is watched correctly by Vite.
+
 ## Meta
 
 [LICENSE (MIT)](/LICENSE)

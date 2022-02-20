@@ -19,6 +19,14 @@ export default function openapi(opts = {}) {
       if (!ext.test(id)) return null;
       if (!filter(id)) return null;
 
+      // Also watch for changes in referenced YAML files
+      const refs = await SwaggerParser.resolve(id);
+      const filteredRefs = refs.paths('file').filter((path) => path !== id);
+
+      for (const ref of filteredRefs) {
+        this.addWatchFile(ref);
+      }
+
       const content = await SwaggerParser.bundle(id);
 
       return {
