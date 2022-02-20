@@ -14,9 +14,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  someKey:
-                    type: string
+                $ref: './schema.yaml#/ApiObject'
               example:
                 someKey: some value
