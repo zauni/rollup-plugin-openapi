@@ -146,7 +146,7 @@ A [minimatch pattern](https://github.com/isaacs/minimatch), or array of patterns
 
 ## Known issues
 
-Currently Vite is not picking up changes in referenced YAML files (using `$ref`) in watch mode. Just the imported YAML file is watched correctly by Vite.
+Currently Vite is not picking up changes in referenced YAML files (using `$ref`) in watch mode. Just the imported YAML file is watched correctly by Vite. See [issue in Vite repo](https://github.com/vitejs/vite/issues/7024).
 
 ## Meta
 
