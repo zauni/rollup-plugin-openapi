@@ -12,6 +12,9 @@ export default function openapi(opts = {}) {
   const options = Object.assign({}, opts);
   const filter = createFilter(options.include, options.exclude);
 
+  // Set of ids which where transformed by this plugin (used for HMR handling)
+  const rootIds = new Set();
+
   return {
     name: 'openapi',
 
@@ -27,6 +30,8 @@ export default function openapi(opts = {}) {
         this.addWatchFile(ref);
       }
 
+      rootIds.add(id);
+
       const content = await SwaggerParser.bundle(id);
 
       return {
@@ -37,6 +42,33 @@ export default function openapi(opts = {}) {
         )};\n\nexport default data;\n`,
         map: null, // Swagger CLI doesn't provide a source map
       };
+    },
+
+    /**
+     * Handle HMR in Vite
+     *
+     * This is a Vite specific workaround to [issue #7024](https://github.com/vitejs/vite/issues/7024)
+     * @param {import('vite').HmrContext} ctx
+     */
+    // @ts-ignore
+    handleHotUpdate(ctx) {
+      // if it is a YAML file and a referenced file, invalidate the root file
+      // and send a full-reload command
+      if (ext.test(ctx.file) && !rootIds.has(ctx.file) && !ctx.modules.length) {
+        if (process && process.env && process.env.DEBUG) {
+          console.log('[openapi] reload referenced file', ctx.file);
+        }
+
+        for (const rootId of rootIds) {
+          const root = ctx.server.moduleGraph.getModuleById(rootId);
+          ctx.server.moduleGraph.invalidateModule(root);
+        }
+        ctx.server.ws.send({
+          type: 'full-reload',
+          path: '*',
+        });
+      }
+      return ctx.modules;
     },
   };
 }
