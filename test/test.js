@@ -2,7 +2,7 @@ const test = require('ava');
 const rollup = require('rollup');
 const typescript = require('@rollup/plugin-typescript');
 
-const openapi = require('..').default;
+const openapi = require('..');
 
 /**
  * Test setup
@@ -41,9 +41,11 @@ test('converts yml', async (t) => {
 test('converts yaml in TypeScript', async (t) => {
   const fn = await setup('main-yaml.ts', [
     typescript({
+      tsconfig: false,
       lib: ['es5', 'es6', 'dom'],
       target: 'es2015',
       module: 'esnext',
+      allowSyntheticDefaultImports: true,
     }),
   ]);
 

@@ -1,8 +1,7 @@
-import * as SwaggerParser from '@apidevtools/swagger-parser';
+import SwaggerParser from '@apidevtools/swagger-parser';
 import type { FilterPattern } from '@rollup/pluginutils';
 import { createFilter } from '@rollup/pluginutils';
-import type { Plugin } from 'rollup';
-import type { HmrContext } from 'vite';
+import type { HmrContext, Plugin } from 'vite';
 
 interface RollupOpenApiOptions {
   /**
@@ -65,7 +64,6 @@ export default function openapi(opts: RollupOpenApiOptions = {}): Plugin {
      *
      * This is a Vite specific workaround to [issue #7024](https://github.com/vitejs/vite/issues/7024)
      */
-    // @ts-expect-error because this is Vite specific but should be ignored by Rollup
     handleHotUpdate(ctx: HmrContext) {
       // if it is a YAML file and a referenced file, invalidate the root file
       // and send a full-reload command

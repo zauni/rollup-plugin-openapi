@@ -1,7 +1,16 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "target": "ES2018",
     "strict": true,
-    "module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "./types",
+    "declarationMap": true
   }
 }
