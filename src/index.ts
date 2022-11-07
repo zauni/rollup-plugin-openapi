@@ -1,4 +1,4 @@
-import { bundle, resolve } from '@apidevtools/swagger-parser';
+import * as SwaggerParser from '@apidevtools/swagger-parser';
 import type { FilterPattern } from '@rollup/pluginutils';
 import { createFilter } from '@rollup/pluginutils';
 import type { Plugin } from 'rollup';
@@ -39,7 +39,7 @@ export default function openapi(opts: RollupOpenApiOptions = {}): Plugin {
       if (!filter(id)) return null;
 
       // Also watch for changes in referenced YAML files
-      const refs = await resolve(id);
+      const refs = await SwaggerParser.resolve(id);
       const filteredRefs = refs.paths('file').filter((path) => path !== id);
 
       for (const ref of filteredRefs) {
@@ -48,7 +48,7 @@ export default function openapi(opts: RollupOpenApiOptions = {}): Plugin {
 
       rootIds.add(id);
 
-      const content = await bundle(id);
+      const content = await SwaggerParser.bundle(id);
 
       return {
         code: `var data = ${JSON.stringify(
