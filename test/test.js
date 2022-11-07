@@ -2,8 +2,14 @@ const test = require('ava');
 const rollup = require('rollup');
 const typescript = require('@rollup/plugin-typescript');
 
-const openapi = require('..');
+const openapi = require('..').default;
 
+/**
+ * Test setup
+ * @param {string} fileName
+ * @param {import('rollup').Plugin[]} additionalPlugins
+ * @returns
+ */
 async function setup(fileName, additionalPlugins = []) {
   const build = await rollup.rollup({
     input: 'test/fixtures/' + fileName,
@@ -34,7 +40,11 @@ test('converts yml', async (t) => {
 
 test('converts yaml in TypeScript', async (t) => {
   const fn = await setup('main-yaml.ts', [
-    typescript({ lib: ['es5', 'es6', 'dom'], target: 'es5' }),
+    typescript({
+      lib: ['es5', 'es6', 'dom'],
+      target: 'es2015',
+      module: 'esnext',
+    }),
   ]);
 
   fn(t);

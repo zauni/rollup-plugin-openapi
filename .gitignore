@@ -1,3 +1,5 @@
 node_modules/
 .vscode/
 dist/
+types/index.d.ts*
+.parcel-cache
