@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-openapi",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.",
   "source": "src/index.ts",
   "main": "dist/index.js",
