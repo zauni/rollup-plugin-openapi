@@ -8,6 +8,8 @@ A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.
   <a href="https://npmjs.com/package/rollup-plugin-openapi"><img src="https://img.shields.io/npm/v/rollup-plugin-openapi.svg" alt="npm package"></a>
   <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/rollup-plugin-openapi.svg" alt="node compatibility"></a>
   <a href="https://github.com/zauni/rollup-plugin-openapi/actions/workflows/ci.yml"><img src="https://github.com/zauni/rollup-plugin-openapi/actions/workflows/ci.yml/badge.svg?branch=main" alt="build status"></a>
+  <a href="https://jsr.io/@zauni/rollup-plugin-openapi"><img src="https://jsr.io/badges/@zauni/rollup-plugin-openapi" alt="JSR"></a>
+  <a href="https://jsr.io/@zauni/rollup-plugin-openapi"><img src="https://jsr.io/badges/@zauni/rollup-plugin-openapi/score" alt="JSR Score"></a>
 </p>
 
 ## Install
