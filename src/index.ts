@@ -1,6 +1,5 @@
 import SwaggerParser from "@apidevtools/swagger-parser";
-import type { FilterPattern } from "@rollup/pluginutils";
-import { createFilter } from "@rollup/pluginutils";
+import { type FilterPattern, createFilter } from "@rollup/pluginutils";
 import type { HmrContext, Plugin } from "vite";
 
 interface RollupOpenApiOptions {
