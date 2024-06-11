@@ -70,5 +70,8 @@
     "openapi",
     "swagger",
     "yaml"
+  ],
+  "trustedDependencies": [
+    "@biomejs/biome"
   ]
 }
