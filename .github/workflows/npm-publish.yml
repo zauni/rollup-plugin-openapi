@@ -15,7 +15,7 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - run: bun install
       - name: Publish package to JSR
-        run: npx jsr publish
+        run: bunx jsr publish
 
   publish-npm:
     runs-on: ubuntu-latest
