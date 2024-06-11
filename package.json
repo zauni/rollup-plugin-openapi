@@ -15,7 +15,6 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "bun test",
     "lint": "biome check ./src && tsc --noEmit",
     "format": "biome format ./src --write",
     "fix": "biome check ./src --write"
@@ -26,8 +25,7 @@
     "sourcemap": true,
     "clean": true,
     "dts": true,
-    "format": ["cjs", "esm"],
-    "cjsInterop": true
+    "format": ["cjs", "esm"]
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
