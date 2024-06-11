@@ -2,7 +2,7 @@
 
 A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.
 
-This plugin also works with `$ref` references in your YAML files.
+**💡** The plugin works with `$ref` references in your YAML files!
 
 <p align="center">
   <a href="https://npmjs.com/package/rollup-plugin-openapi"><img src="https://img.shields.io/npm/v/rollup-plugin-openapi.svg" alt="npm package"></a>
