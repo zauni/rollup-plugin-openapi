@@ -10,7 +10,9 @@ const successResponse = apiToCheck.paths["/my/path"]?.get?.responses[
 const schema = successResponse.content?.["application/json"]
   .schema as OpenAPIV3.SchemaObject;
 
-// @ts-ignore
-expect(api.paths["/my/path"].get.summary).toBe("Some GET request");
-// @ts-ignore
+declare global {
+  const expect: typeof import("bun:test").expect;
+}
+
+expect(api.paths?.["/my/path"]?.get?.summary).toBe("Some GET request");
 expect(schema.type).toBe("object");
