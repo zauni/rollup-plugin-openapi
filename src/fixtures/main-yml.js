@@ -1,6 +1,6 @@
 import api from "./api.yml";
 
-/** @type {import("bun:test").expect} */
+/** @type {import("@std/expect").expect} */
 const e = expect;
 
 e(api.paths["/my/path"].get.summary).toBe("Some GET request");
