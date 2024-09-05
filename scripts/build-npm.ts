@@ -14,6 +14,12 @@ await Promise.all(
   }),
 );
 
+// get version from deno.json file
+const denoMeta = await Deno.readFile("deno.json");
+const decoder = new TextDecoder();
+const data = decoder.decode(denoMeta);
+const { version } = JSON.parse(data);
+
 await build({
   entryPoints: ["./src/index.ts"],
   outDir: "./npm",
@@ -25,7 +31,7 @@ await build({
   package: {
     // package.json properties
     name: "rollup-plugin-openapi",
-    version: Deno.args[0],
+    version,
     description:
       "A Rollup and Vite plugin which converts OpenAPI YAML files to ES6 modules.",
     license: "MIT",
@@ -56,18 +62,6 @@ await build({
       "swagger",
       "yaml",
     ],
-    dependencies: {
-      // "@apidevtools/swagger-parser": "^10.1.0",
-      // "@rollup/pluginutils": "^5.1.0",
-      // "openapi-types": "^12.1.3",
-    },
-    devDependencies: {
-      // "@rollup/plugin-typescript": "^11.1.6",
-      // "@rollup/wasm-node": "^4.21.2",
-      // "tslib": "^2.7.0",
-      // "typescript": "^5.4.5",
-      // "vite": "^5.2.13",
-    },
   },
   compilerOptions: {
     lib: ["ESNext"],
