@@ -1,5 +1,5 @@
 import SwaggerParser from "@apidevtools/swagger-parser";
-import { type FilterPattern, createFilter } from "@rollup/pluginutils";
+import { createFilter, type FilterPattern } from "@rollup/pluginutils";
 import type { HmrContext, Plugin } from "vite";
 
 interface RollupOpenApiOptions {
@@ -49,11 +49,13 @@ export default function openapi(opts: RollupOpenApiOptions = {}): Plugin {
       const content = await SwaggerParser.bundle(id);
 
       return {
-        code: `var data = ${JSON.stringify(
-          content,
-          null,
-          2,
-        )};\n\nexport default data;\n`,
+        code: `var data = ${
+          JSON.stringify(
+            content,
+            null,
+            2,
+          )
+        };\n\nexport default data;\n`,
         map: null, // Swagger CLI doesn't provide a source map
       };
     },
@@ -67,7 +69,7 @@ export default function openapi(opts: RollupOpenApiOptions = {}): Plugin {
       // if it is a YAML file and a referenced file, invalidate the root file
       // and send a full-reload command
       if (ext.test(ctx.file) && !rootIds.has(ctx.file) && !ctx.modules.length) {
-        if (process?.env?.DEBUG) {
+        if (Deno.env.has("DEBUG")) {
           console.log("[openapi] reload referenced file", ctx.file);
         }
 

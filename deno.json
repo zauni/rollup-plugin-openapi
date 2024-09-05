@@ -1,0 +1,27 @@
+{
+  "name": "@zauni/rollup-plugin-openapi",
+  "version": "3.0.0",
+  "exports": "./src/index.ts",
+  "publish": {
+    "exclude": ["src/**/*.test.ts", "src/fixtures/**", ".github", "npm"]
+  },
+  "tasks": {
+    "build": "deno -A scripts/build-npm.ts",
+    "lint": "deno lint && deno check '**/*.ts' && deno fmt --check",
+    "format": "deno fmt",
+    "test": "deno test --allow-sys --allow-read"
+  },
+  "imports": {
+    "@apidevtools/swagger-parser": "npm:@apidevtools/swagger-parser@^10.1.0",
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+    "@rollup/plugin-typescript": "npm:@rollup/plugin-typescript@^11.1.6",
+    "@rollup/pluginutils": "npm:@rollup/pluginutils@^5.1.0",
+    "@rollup/wasm-node": "npm:@rollup/wasm-node@^4.21.2",
+    "@std/expect": "jsr:@std/expect@^1.0.2",
+    "@std/fs": "jsr:@std/fs@^1.0.3",
+    "@std/testing": "jsr:@std/testing@^1.0.2",
+    "openapi-types": "npm:openapi-types@^12.1.3",
+    "tslib": "npm:tslib@^2.7.0",
+    "vite": "npm:vite@^5.4.3"
+  }
+}

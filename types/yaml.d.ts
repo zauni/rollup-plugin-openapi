@@ -1,8 +1,8 @@
 /**
  * Declare all *.yaml imports as an OpenAPI.Document type
  */
-declare module '*.yaml' {
-  import type { OpenAPI } from 'openapi-types';
+declare module "*.yaml" {
+  import type { OpenAPI } from "openapi-types";
 
   const content: OpenAPI.Document;
   export default content;
@@ -11,8 +11,8 @@ declare module '*.yaml' {
 /**
  * Declare all *.yml imports as an OpenAPI.Document type
  */
-declare module '*.yml' {
-  import type { OpenAPI } from 'openapi-types';
+declare module "*.yml" {
+  import type { OpenAPI } from "openapi-types";
 
   const content: OpenAPI.Document;
   export default content;

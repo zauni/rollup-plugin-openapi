@@ -1,8 +1,10 @@
-import { expect, test } from "bun:test";
 import typescript from "@rollup/plugin-typescript";
-import { type Plugin, rollup } from "rollup";
+import { type Plugin, rollup } from "@rollup/wasm-node";
+import { expect } from "@std/expect";
+import { it } from "@std/testing/bdd";
+// import * as tslib from "tslib";
 
-import openapi from ".";
+import openapi from "./index.ts";
 
 /**
  * Test setup
@@ -14,6 +16,7 @@ async function setup(fileName: string, additionalPlugins: Plugin[] = []) {
       file: "bundle.js",
       format: "iife",
     },
+    // @ts-ignore The WASM build of rollup has conflicting types
     plugins: [openapi(), ...additionalPlugins],
   });
   const code = await build.generate({});
@@ -23,26 +26,28 @@ async function setup(fileName: string, additionalPlugins: Plugin[] = []) {
   return new Function("expect", code.output[0].code);
 }
 
-test("converts yaml", async () => {
+it("converts yaml", async () => {
   const fn = await setup("main-yaml.js");
 
   fn(expect);
 });
 
-test("converts yml", async () => {
+it("converts yml", async () => {
   const fn = await setup("main-yml.js");
 
   fn(expect);
 });
 
-test("converts yaml in TypeScript", async () => {
+it("converts yaml in TypeScript", async () => {
   const fn = await setup("main-yaml.ts", [
+    // @ts-ignore - The rollup plugin is not typed correctly for "node16 from ESM" resolution (https://docs.deno.com/runtime/reference/npm/#module-resolution)
     typescript({
       tsconfig: false,
       lib: ["es5", "es6", "dom"],
       target: "es2015",
       module: "esnext",
       allowSyntheticDefaultImports: true,
+      tslib: "dummy",
     }),
   ]);
 
