@@ -1,6 +1,6 @@
 {
   "name": "@zauni/rollup-plugin-openapi",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "exports": "./src/index.ts",
   "publish": {
     "exclude": ["src/**/*.test.ts", "src/fixtures/**", ".github", "npm"]
@@ -21,7 +21,6 @@
     "@std/fs": "jsr:@std/fs@^1.0.3",
     "@std/testing": "jsr:@std/testing@^1.0.2",
     "openapi-types": "npm:openapi-types@^12.1.3",
-    "tslib": "npm:tslib@^2.7.0",
     "vite": "npm:vite@^5.4.3"
   }
 }

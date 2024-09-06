@@ -2,7 +2,6 @@ import typescript from "@rollup/plugin-typescript";
 import { type Plugin, rollup } from "@rollup/wasm-node";
 import { expect } from "@std/expect";
 import { it } from "@std/testing/bdd";
-// import * as tslib from "tslib";
 
 import openapi from "./index.ts";
 
